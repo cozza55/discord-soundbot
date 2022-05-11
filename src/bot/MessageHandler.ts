@@ -11,9 +11,15 @@ import CommandCollection from './CommandCollection';
 
 export default class MessageHandler {
   private readonly commands: CommandCollection;
+  private readonly deleteMessages: boolean;
 
-  constructor(commands: CommandCollection) {
+  constructor(commands: CommandCollection, deleteMessages?: boolean) {
     this.commands = commands;
+    if (deleteMessages === true) {
+      this.deleteMessages = true;
+    } else {
+      this.deleteMessages = false;
+    }
   }
 
   public handle(message: Message) {
@@ -40,9 +46,11 @@ export default class MessageHandler {
 
     if (commandToRun.elevated && !userHasElevatedRole(message.member)) {
       message.channel.send(localize.t('errors.unauthorized'));
+      if (this.deleteMessages) message.delete();
+
       return;
     }
 
-    commandToRun.run(message, params);
+    commandToRun.run(message, params, this.deleteMessages);
   }
 }

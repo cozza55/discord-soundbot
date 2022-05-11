@@ -1,3 +1,4 @@
+import ffmpegPath from '@ffmpeg-installer/ffmpeg';
 import { Message } from 'discord.js';
 import ffmpeg from 'fluent-ffmpeg';
 import fs from 'fs';
@@ -11,7 +12,9 @@ import DownloadOptions, { ConvertOptions } from '../CommandOptions';
 import YoutubeValidator from '../validator/YoutubeValidator';
 import BaseDownloader from './BaseDownloader';
 
+ffmpeg.setFfmpegPath(ffmpegPath.path);
 const unlink = util.promisify(fs.unlink);
+
 
 export default class YoutubeDownloader extends BaseDownloader {
   protected readonly validator: YoutubeValidator;

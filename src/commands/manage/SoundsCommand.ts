@@ -9,7 +9,7 @@ import chunkedMessages from '../util/chunkedMessages';
 export class SoundsCommand extends ConfigCommand {
   public readonly triggers = ['sounds'];
 
-  public run(message: Message, params: string[]) {
+  public run(message: Message, params: string[], deleteMessages?: boolean) {
     const sounds = getSounds();
 
     if (!sounds.length) {
@@ -19,5 +19,7 @@ export class SoundsCommand extends ConfigCommand {
 
     const page = parseInt(params[0]);
     chunkedMessages(sounds, page).forEach(chunk => message.author.send(chunk));
+
+    if (deleteMessages) this.deleteMessage(message);
   }
 }

@@ -11,7 +11,7 @@
       "export class ${1:NewCommand} extends Command {",
       "\tpublic readonly triggers = ['${2:trigger}'];",
       "",
-      "\tpublic run(message: Message, params: string[]) {",
+      "\tpublic run(message: Message, params: string[], deleteMessages?: boolean) {",
       "\t\t$0",
       "\t}",
       "}"

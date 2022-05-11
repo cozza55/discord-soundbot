@@ -96,7 +96,7 @@ const commands = [
 ];
 
 const commandCollection = new CommandCollection(commands);
-const messageHandler = new MessageHandler(commandCollection);
+const messageHandler = new MessageHandler(commandCollection, config.deleteMessages);
 
 const soundBot = new SoundBot(config, commandCollection, messageHandler, queue);
 
