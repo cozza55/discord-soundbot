@@ -35,8 +35,8 @@ export class RenameCommand extends Command {
     }
 
     const extension = getExtensionForSound(oldName);
-    const oldFile = `sounds/${oldName}.${extension}`;
-    const newFile = `sounds/${newName}.${extension}`;
+    const oldFile = `/volume/sounds/${oldName}.${extension}`;
+    const newFile = `/volume/sounds/${newName}.${extension}`;
     fs.renameSync(oldFile, newFile);
     soundsDb.rename(oldName, newName);
 

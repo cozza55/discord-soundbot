@@ -3,7 +3,7 @@ import fs from 'fs';
 import { config } from './Container';
 
 const getSoundsFromSoundFolder = () => {
-  const files = fs.readdirSync('sounds/');
+  const files = fs.readdirSync('/volume/sounds/');
 
   return files.filter(sound =>
     config.acceptedExtensions.some(extension => sound.endsWith(extension))
@@ -20,5 +20,5 @@ export const getSoundsWithExtension = () => getSoundsFromSoundFolder().map(getSo
 export const getSounds = () => getSoundsWithExtension().map(sound => sound.name);
 export const getExtensionForSound = (name: string) =>
   getSoundsWithExtension().find(sound => sound.name === name)!.extension;
-export const getPathForSound = (sound: string) => `sounds/${sound}.${getExtensionForSound(sound)}`;
+export const getPathForSound = (sound: string) => `/volume/sounds/${sound}.${getExtensionForSound(sound)}`;
 export const existsSound = (name: string) => getSounds().includes(name);

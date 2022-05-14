@@ -54,6 +54,6 @@ export default class AttachmentDownloader extends BaseDownloader {
   private saveResponseToFile(response: IncomingMessage, filename: string) {
     if (response.statusCode !== 200) throw new UnspecificError();
 
-    response.pipe(fs.createWriteStream(`./sounds/${filename}`));
+    response.pipe(fs.createWriteStream(`/volume/sounds/${filename}`));
   }
 }

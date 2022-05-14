@@ -95,10 +95,10 @@ export class ModifyCommand extends Command {
 
   private getFileNameFor(sound: string): FileInfo {
     const extension = getExtensionForSound(sound);
-    const currentFile = `./sounds/${sound}.${extension}`;
+    const currentFile = `/volume/sounds/${sound}.${extension}`;
 
     const timestamp = Date.now();
-    const tempFile = `./sounds/${sound}-${timestamp}.${extension}`;
+    const tempFile = `/volume/sounds/${sound}-${timestamp}.${extension}`;
 
     return { currentFile, tempFile };
   }
